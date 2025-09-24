@@ -39,7 +39,8 @@ def generate_launch_description():
         #   DeclareLaunchArgument(name='fixed_frame', default_value='base',
         #                         description='Fixed frame for RVIZ'),
           DeclareLaunchArgument(name='namespace', default_value='',
-                                description='Choose a namespace for the launched topics.'),
+                                description=
+                                   'Choose a namespace for the launched topics.'),
 
         #   SetLaunchConfiguration(name='config_file',
         #                          value='go2.rviz'),
