@@ -1452,9 +1452,9 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 0" />
   </joint>
-  </joint>
 
-    <link
+
+  <link
     name="camera_link">
     <inertial>
       <origin
