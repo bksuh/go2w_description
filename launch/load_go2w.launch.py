@@ -16,6 +16,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
 import os
 
+PACKAGE_NAME = 'go2w_description'
 def generate_launch_description():
     # 패키지 경로 찾기
      pkg_share = get_package_share_directory('go2w_description')
@@ -42,16 +43,16 @@ def generate_launch_description():
                                 description=
                                    'Choose a namespace for the launched topics.'),
 
-        #   SetLaunchConfiguration(name='config_file',
-        #                          value='go2.rviz'),
+          SetLaunchConfiguration(name='config_file',
+                                 value='default.rviz'),
           # SetLaunchConfiguration(name='model',
           #                        value=PathJoinSubstitution([FindPackageShare('go2w_description'),
           #                                                    'urdf',
           #                                                    'robot.xacro'])),
-        #   SetLaunchConfiguration(name='rvizconfig',
-        #                          value=PathJoinSubstitution([FindPackageShare('go2_description'),
-        #                                                      'config',
-        #                                                      LaunchConfiguration('config_file')])),
+          # SetLaunchConfiguration(name='rvizconfig',
+          #                        value=PathJoinSubstitution([FindPackageShare('go2w_description'),
+          #                                                    'config',
+          #                                                    LaunchConfiguration('config_file')])),
 
           Node(package='joint_state_publisher',
                executable='joint_state_publisher',
@@ -72,9 +73,9 @@ def generate_launch_description():
           Node(package='rviz2',
                executable='rviz2',
                name='rviz2',
-            #    arguments=[
-            #         '-d', LaunchConfiguration('rvizconfig'),
-            #         '-f', LaunchConfiguration('fixed_frame')
-            #    ],
-               condition=IfCondition(LaunchConfiguration('use_rviz')))
+               arguments=[
+                    "-d",
+                    PathJoinSubstitution([FindPackageShare(PACKAGE_NAME), "config", "default.rviz"]),
+               ],
+          )
     ])
