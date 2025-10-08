@@ -24,7 +24,7 @@ def generate_launch_description():
           DeclareLaunchArgument(name='use_jsp', default_value='gui',
                                 choices=['gui', 'jsp', 'none'],
                                 description='Choose if joint_state_publisher is launched'),
-          DeclareLaunchArgument(name='use_rviz', default_value='true',
+          DeclareLaunchArgument(name='use_rviz', default_value='false',
                                 choices=['true', 'false'],
                                 description='Choose if rviz is launched'),
           DeclareLaunchArgument(name='namespace', default_value='',
@@ -47,12 +47,12 @@ def generate_launch_description():
                namespace=LaunchConfiguration('namespace')
           ),
 
-          Node(package='rviz2',
-               executable='rviz2',
-               name='rviz2',
-               arguments=[
-                    "-d",
-                    PathJoinSubstitution([FindPackageShare(PACKAGE_NAME), "config", "default.rviz"]),
-               ],
-          )
+          # Node(package='rviz2',
+          #      executable='rviz2',
+          #      name='rviz2',
+          #      arguments=[
+          #           "-d",
+          #           PathJoinSubstitution([FindPackageShare(PACKAGE_NAME), "config", "default.rviz"]),
+          #      ],
+          # )
     ])
